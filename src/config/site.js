@@ -21,13 +21,13 @@ export const siteConfig = {
     about:
       "I'm pursuing a B.Tech in Computer Science Engineering at IEC College of Engineering & Technology, Greater Noida (September 2023–July 2027 expected). My interests include AI/ML, Generative AI application engineering, backend development, and building useful software products. I work with Python, machine learning and deep learning frameworks, LLM application tools, APIs, and databases, and I enjoy turning technical ideas into working projects.",
     portrait: "/assets/aryan-portrait-cutout.webp",
-    resume: "",
+    resume: "/Aryan_Yadav_Resume.pdf",
     favicon: "AY initials",
   },
 
   contact: {
-    email: "", // Can be filled by owner
-    phone: "",
+    email: "ay6033756@gmail.com",
+    phone: "+91 8318695055",
     whatsapp: "",
     instagram: "",
     youtube: "",
@@ -35,7 +35,9 @@ export const siteConfig = {
     github: "https://github.com/aryxn-builds",
     behance: "",
     dribbble: "",
-    otherLinks: [],
+    otherLinks: [
+      { label: "LeetCode", url: "https://leetcode.com/" },
+    ],
   },
 
   appearance: {
@@ -62,7 +64,7 @@ export const siteConfig = {
     showClientLogos: false,
     showTestimonials: false,
     showContactForm: true,
-    showDownloadResume: false,
+    showDownloadResume: true,
     showProjectArchive: true,
   },
 

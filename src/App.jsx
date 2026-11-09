@@ -8,6 +8,7 @@ import { Education } from "./components/Education";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { ResumeWidget } from "./components/ResumeWidget";
 import { siteConfig } from "./config/site";
 
 export function App() {
@@ -137,6 +138,9 @@ export function App() {
 
       {/* Footer */}
       <Footer toggleSwarm={toggleSwarm} isSwarmActive={isSwarmActive} />
+
+      {/* Floating Bottom-Right Corner Resume Button (View & Download) */}
+      <ResumeWidget />
     </div>
   );
 }
