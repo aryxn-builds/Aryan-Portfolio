@@ -82,3 +82,4 @@ export const PageLoader = () => {
     </div>
   );
 };
+

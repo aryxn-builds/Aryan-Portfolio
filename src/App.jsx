@@ -88,10 +88,27 @@ export function App() {
     return () => clearInterval(interval);
   }, [isSwarmActive]);
 
+  // Automatically start Swarm animation by default on website open
+  useEffect(() => {
+    if (!siteConfig.preferences.autoStartSwarm) return;
+
+    // Respect user motion preferences
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    // Brief timeout to ensure DOM is fully painted, then launch Swarmline
+    const timer = setTimeout(() => {
+      toggleSwarm();
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="site-wrapper">
-      {/* Editorial Minimal Page Loading Animation */}
-      <PageLoader />
+      {/* Editorial Minimal Page Loading Animation (active if autoStartSwarm is disabled) */}
+      {!siteConfig.preferences.autoStartSwarm && <PageLoader />}
 
       {/* Scroll-linked reading progress indicator */}
       <div

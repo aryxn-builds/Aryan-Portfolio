@@ -66,6 +66,7 @@ export const siteConfig = {
     showContactForm: true,
     showDownloadResume: true,
     showProjectArchive: true,
+    autoStartSwarm: true, // Swarm animation triggers automatically on website load
   },
 
   navLinks: [
