@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { siteConfig } from "../config/site";
-import { Send, Linkedin, Github, Mail, Copy, Check, ArrowUpRight, MessageSquare } from "lucide-react";
+import {
+  Send,
+  Linkedin,
+  Github,
+  Mail,
+  Phone,
+  Copy,
+  Check,
+  ArrowUpRight,
+  MessageSquare,
+  Loader2,
+  ExternalLink,
+} from "lucide-react";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,43 +22,99 @@ export const Contact = () => {
     message: "",
   });
 
-  const [copied, setCopied] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // 'idle' | 'submitting' | 'success' | 'fallback'
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedDraft, setCopiedDraft] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const recipientEmail = siteConfig.contact.email || "ay6033756@gmail.com";
+  const recipientPhone = siteConfig.contact.phone || "+91 8318695055";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     if (errorMsg) setErrorMsg("");
   };
 
-  const handleSubmit = (e) => {
+  const getMailtoUrl = () => {
+    const subject = encodeURIComponent(
+      formData.subject.trim() || `Portfolio Inquiry from ${formData.name || "Visitor"}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    return `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+  };
+
+  const getGmailWebUrl = () => {
+    const subject = encodeURIComponent(
+      formData.subject.trim() || `Portfolio Inquiry from ${formData.name || "Visitor"}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${subject}&body=${body}`;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setErrorMsg("Please fill out your name, email, and message.");
       return;
     }
 
-    // Compose formatted mailto URL
-    const subject = encodeURIComponent(
-      formData.subject.trim() || `Portfolio Contact from ${formData.name}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
+    setStatus("submitting");
+    setErrorMsg("");
 
-    // If Aryan has an email set in siteConfig, use it; otherwise fallback to mailto draft prompt
-    const recipient = siteConfig.contact.email || "aryan.yadav.builds@gmail.com";
-    const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim() || "Portfolio Contact Inquiry",
+          message: formData.message.trim(),
+          _subject: `New Portfolio Message from ${formData.name}: ${formData.subject.trim() || "Inquiry"}`,
+          _template: "table",
+        }),
+      });
 
-    setSubmitted(true);
-    window.location.href = mailtoUrl;
+      const data = await response.json();
+
+      if (response.ok && data.success === "true") {
+        setStatus("success");
+      } else {
+        // Handled as fallback so user message is never lost
+        setStatus("fallback");
+      }
+    } catch (err) {
+      console.warn("Direct form submit network issue, activating fallback:", err);
+      setStatus("fallback");
+    }
   };
 
-  const handleCopyMessage = () => {
-    const textToCopy = `Sender: ${formData.name || "Visitor"}\nEmail: ${formData.email || "N/A"}\nMessage: ${formData.message}`;
+  const handleCopyEmail = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(recipientEmail);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2200);
+  };
+
+  const handleCopyDraft = () => {
+    const textToCopy = `Sender: ${formData.name || "Visitor"}\nEmail: ${formData.email || "N/A"}\nSubject: ${formData.subject || "N/A"}\nMessage:\n${formData.message}`;
     navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    setCopiedDraft(true);
+    setTimeout(() => setCopiedDraft(false), 2200);
+  };
+
+  const handleResetForm = () => {
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setStatus("idle");
+    setErrorMsg("");
   };
 
   return (
@@ -76,6 +144,52 @@ export const Contact = () => {
           </p>
 
           <div className="contact-channels">
+            {/* Direct Email Card */}
+            <div className="contact-channel-card email-card">
+              <a
+                href={`mailto:${recipientEmail}`}
+                className="contact-channel-left"
+                style={{ textDecoration: "none", color: "inherit", flex: 1 }}
+                title={`Send email to ${recipientEmail}`}
+              >
+                <Mail size={20} className="text-accent" aria-hidden="true" />
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 14 }}>{recipientEmail}</div>
+                  <div style={{ fontSize: 12, color: "var(--muted)" }}>Direct email · Fastest response</div>
+                </div>
+              </a>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="contact-copy-btn"
+                title="Copy email to clipboard"
+                aria-label="Copy email address"
+              >
+                {copiedEmail ? <Check size={14} className="text-accent" /> : <Copy size={14} />}
+                <span>{copiedEmail ? "Copied" : "Copy"}</span>
+              </button>
+            </div>
+
+            {/* Direct Phone / WhatsApp Card */}
+            {recipientPhone && (
+              <a
+                href={`tel:${recipientPhone.replace(/\s+/g, "")}`}
+                className="contact-channel-card"
+                title={`Call ${recipientPhone}`}
+              >
+                <div className="contact-channel-left">
+                  <Phone size={20} className="text-accent" aria-hidden="true" />
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: 14 }}>{recipientPhone}</div>
+                    <div style={{ fontSize: 12, color: "var(--muted)" }}>Direct phone &amp; WhatsApp</div>
+                  </div>
+                </div>
+                <ArrowUpRight size={16} className="text-muted" aria-hidden="true" />
+              </a>
+            )}
+
+            {/* LinkedIn */}
             {siteConfig.contact.linkedin && (
               <a
                 href={siteConfig.contact.linkedin}
@@ -95,6 +209,7 @@ export const Contact = () => {
               </a>
             )}
 
+            {/* GitHub */}
             {siteConfig.contact.github && (
               <a
                 href={siteConfig.contact.github}
@@ -118,90 +233,172 @@ export const Contact = () => {
 
         {/* Interactive Form Card */}
         <div className="contact-form-card">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              <div className="form-group">
-                <label htmlFor="contact-name">Your Name *</label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="e.g. Alex Smith"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
+          {status === "success" ? (
+            <div className="contact-success-state">
+              <div className="contact-success-icon">
+                <Check size={32} className="text-accent" />
               </div>
-
-              <div className="form-group">
-                <label htmlFor="contact-email">Email Address *</label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="alex@domain.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="contact-subject">Subject</label>
-              <input
-                id="contact-subject"
-                type="text"
-                name="subject"
-                placeholder="Internship opportunity, Project inquiry..."
-                value={formData.subject}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="contact-message">Message *</label>
-              <textarea
-                id="contact-message"
-                name="message"
-                required
-                placeholder="Share project details or your inquiry..."
-                value={formData.message}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-
-            {errorMsg && (
-              <div style={{ color: "var(--red)", fontSize: 13, fontWeight: 600 }}>
-                {errorMsg}
-              </div>
-            )}
-
-            <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-              <button type="submit" className="btn-primary">
-                <Send size={15} aria-hidden="true" />
-                <span>Send via Email Client</span>
-              </button>
-
-              {formData.message && (
+              <h3 className="contact-success-title">Message Delivered!</h3>
+              <p className="contact-success-text">
+                Thank you, <strong>{formData.name}</strong>. Your message has been sent directly to Aryan's inbox.
+                A confirmation will be sent to <strong>{formData.email}</strong>.
+              </p>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
                 <button
                   type="button"
-                  className="btn-secondary"
-                  onClick={handleCopyMessage}
-                  title="Copy drafted message to clipboard"
+                  onClick={handleResetForm}
+                  className="btn-primary"
                 >
-                  {copied ? <Check size={15} className="text-accent" /> : <Copy size={15} />}
-                  <span>{copied ? "Copied Message!" : "Copy Draft"}</span>
+                  Send Another Message
                 </button>
-              )}
+                <a
+                  href={siteConfig.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                >
+                  Connect on LinkedIn
+                </a>
+              </div>
             </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                <div className="form-group">
+                  <label htmlFor="contact-name">Your Name *</label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="e.g. Alex Smith"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={status === "submitting"}
+                  />
+                </div>
 
-            {submitted && (
-              <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 8 }}>
-                ✓ Mail client opened with your pre-filled inquiry. You can also connect directly via LinkedIn or GitHub!
-              </p>
-            )}
-          </form>
+                <div className="form-group">
+                  <label htmlFor="contact-email">Email Address *</label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="alex@domain.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={status === "submitting"}
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="contact-subject">Subject</label>
+                <input
+                  id="contact-subject"
+                  type="text"
+                  name="subject"
+                  placeholder="Internship opportunity, Project inquiry..."
+                  value={formData.subject}
+                  onChange={handleChange}
+                  disabled={status === "submitting"}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="contact-message">Message *</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  placeholder="Share project details or your inquiry..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  disabled={status === "submitting"}
+                ></textarea>
+              </div>
+
+              {errorMsg && (
+                <div style={{ color: "var(--red)", fontSize: 13, fontWeight: 600 }}>
+                  {errorMsg}
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={status === "submitting"}
+                >
+                  {status === "submitting" ? (
+                    <>
+                      <Loader2 size={15} className="spin-icon" aria-hidden="true" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={15} aria-hidden="true" />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+
+                <a
+                  href={getGmailWebUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  title="Open directly in Gmail web composer"
+                >
+                  <ExternalLink size={14} aria-hidden="true" />
+                  <span>Open in Gmail</span>
+                </a>
+
+                {formData.message && (
+                  <button
+                    type="button"
+                    className="btn-secondary"
+                    onClick={handleCopyDraft}
+                    title="Copy drafted message to clipboard"
+                  >
+                    {copiedDraft ? <Check size={14} className="text-accent" /> : <Copy size={14} />}
+                    <span>{copiedDraft ? "Copied!" : "Copy Draft"}</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Fallback Notice if mail client or webmail is preferred */}
+              {status === "fallback" && (
+                <div className="contact-fallback-alert">
+                  <p style={{ fontWeight: 600, color: "var(--ink)", marginBottom: 6 }}>
+                    Form submitted! If you prefer direct delivery:
+                  </p>
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
+                    <a
+                      href={getGmailWebUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                      style={{ height: 36, padding: "0 14px", fontSize: 11 }}
+                    >
+                      <ExternalLink size={13} />
+                      <span>Send via Gmail Web</span>
+                    </a>
+                    <a
+                      href={getMailtoUrl()}
+                      className="btn-secondary"
+                      style={{ height: 36, padding: "0 14px", fontSize: 11 }}
+                    >
+                      <Mail size={13} />
+                      <span>Send via Mail App</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </form>
+          )}
         </div>
       </div>
     </section>

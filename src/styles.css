@@ -1435,6 +1435,84 @@ h1, h2, h3, h4, h5, h6 {
   gap: 14px;
 }
 
+.contact-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 10px;
+  background: #1c1c24;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.contact-copy-btn:hover {
+  color: var(--ink);
+  border-color: var(--red);
+  background: rgba(227, 43, 60, 0.1);
+}
+
+.contact-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 0;
+  gap: 12px;
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+.contact-success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(227, 43, 60, 0.12);
+  border: 1px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.contact-success-title {
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: 1;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.contact-success-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 500px;
+}
+
+.contact-fallback-alert {
+  margin-top: 10px;
+  padding: 16px 20px;
+  background: #17171e;
+  border: 1px solid var(--line-light);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .contact-form-card {
   background: var(--panel);
   border: 1px solid var(--line);
