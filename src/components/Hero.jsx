@@ -38,12 +38,12 @@ export const Hero = ({ toggleSwarm, isSwarmActive }) => {
         </div>
       </div>
 
-      {/* Center Portrait - Seamlessly blended with edge feathering and bottom gradient mask */}
+      {/* Center Portrait - Crisp AI Silhouette Cutout Seamlessly Blended on #090909 */}
       <div className="hero-portrait">
         <picture>
-          <source srcSet="/assets/aryan-portrait-feathered.webp" type="image/webp" />
+          <source srcSet="/assets/aryan-portrait-cutout.webp" type="image/webp" />
           <img
-            src="/assets/aryan-portrait.jpg"
+            src="/assets/aryan-portrait-cutout.png"
             alt="Aryan Yadav - AI/ML & GenAI Developer"
             width="1024"
             height="1002"
