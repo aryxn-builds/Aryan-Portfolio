@@ -9,6 +9,7 @@ import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { ResumeWidget } from "./components/ResumeWidget";
+import { PageLoader } from "./components/PageLoader";
 import { siteConfig } from "./config/site";
 
 export function App() {
@@ -89,6 +90,9 @@ export function App() {
 
   return (
     <div className="site-wrapper">
+      {/* Editorial Minimal Page Loading Animation */}
+      <PageLoader />
+
       {/* Scroll-linked reading progress indicator */}
       <div
         className="reading-progress"
