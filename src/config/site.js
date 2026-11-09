@@ -20,7 +20,7 @@ export const siteConfig = {
       "I'm Aryan Yadav, a Computer Science Engineering student focused on AI/ML, Generative AI, and software development. I build practical applications that combine machine learning, LLMs, APIs, and modern development tools.",
     about:
       "I'm pursuing a B.Tech in Computer Science Engineering at IEC College of Engineering & Technology, Greater Noida (September 2023–July 2027 expected). My interests include AI/ML, Generative AI application engineering, backend development, and building useful software products. I work with Python, machine learning and deep learning frameworks, LLM application tools, APIs, and databases, and I enjoy turning technical ideas into working projects.",
-    portrait: "", // Typographic & generative neural visual used when no portrait is supplied
+    portrait: "/assets/aryan-portrait-feathered.webp",
     resume: "",
     favicon: "AY initials",
   },
