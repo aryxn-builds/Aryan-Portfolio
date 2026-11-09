@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="rpBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141417"/>
+      <stop offset="50%" stop-color="#0c0c0e"/>
+      <stop offset="100%" stop-color="#08080a"/>
+    </linearGradient>
+    <linearGradient id="rpRedAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4151"/>
+      <stop offset="100%" stop-color="#bd0c22"/>
+    </linearGradient>
+    <linearGradient id="rpCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a20"/>
+      <stop offset="100%" stop-color="#111115"/>
+    </linearGradient>
+    <filter id="rpGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#rpBgGrad)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#242126" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="135" x2="1200" y2="135" />
+    <line x1="0" y1="270" x2="1200" y2="270" />
+    <line x1="0" y1="405" x2="1200" y2="405" />
+    <line x1="0" y1="540" x2="1200" y2="540" />
+    <line x1="300" y1="0" x2="300" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="900" y1="0" x2="900" y2="675" />
+  </g>
+
+  <!-- Ambient Light -->
+  <circle cx="1040" cy="190" r="170" fill="#ef4151" opacity="0.11" filter="url(#rpGlow)"/>
+  <circle cx="200" cy="480" r="190" fill="#FF9900" opacity="0.06" filter="url(#rpGlow)"/>
+
+  <!-- Top bar info -->
+  <text x="60" y="70" font-family="'Manrope', sans-serif" font-size="14" font-weight="700" fill="#ef4151" letter-spacing="3">AUTONOMOUS MULTI-AGENT RESEARCH // LANGGRAPH</text>
+  <text x="1140" y="70" font-family="'Manrope', sans-serif" font-size="14" font-weight="600" fill="#a09c9a" text-anchor="end">FASTAPI · LANGGRAPH · TAVILY · SUPABASE</text>
+
+  <!-- Main Mockup Container -->
+  <rect x="60" y="100" width="1080" height="515" rx="12" fill="url(#rpCardGrad)" stroke="#2e292d" stroke-width="1.5"/>
+
+  <!-- Mockup Header -->
+  <rect x="60" y="100" width="1080" height="48" rx="12" fill="#141418"/>
+  <rect x="60" y="136" width="1080" height="12" fill="#141418"/>
+  <line x1="60" y1="148" x2="1140" y2="148" stroke="#252126" stroke-width="1"/>
+  
+  <!-- Window dots -->
+  <circle cx="90" cy="124" r="6" fill="#ff5f56"/>
+  <circle cx="110" cy="124" r="6" fill="#ffbd2e"/>
+  <circle cx="130" cy="124" r="6" fill="#27c93f"/>
+
+  <!-- Mockup URL bar -->
+  <rect x="200" y="112" width="600" height="24" rx="6" fill="#0d0d10" stroke="#2a252b" stroke-width="1"/>
+  <text x="220" y="128" font-family="'Manrope', monospace" font-size="11" fill="#7d787c">research-pilot-ai.vercel.app · Autonomous Intelligence Workspace</text>
+
+  <!-- Left Column: Multi-Agent Graph Nodes -->
+  <g transform="translate(100, 180)">
+    <!-- Node 1: Planner Agent -->
+    <rect x="0" y="0" width="310" height="85" rx="8" fill="#17171d" stroke="#2a252b" stroke-width="1.2"/>
+    <circle cx="36" cy="42" r="18" fill="#FF9900" opacity="0.15"/>
+    <text x="36" y="47" font-family="'Manrope', sans-serif" font-size="13" font-weight="800" fill="#FF9900" text-anchor="middle">🧠</text>
+    <text x="70" y="36" font-family="'Manrope', sans-serif" font-size="14" font-weight="700" fill="#f2efeb">Planner Agent</text>
+    <text x="70" y="56" font-family="'Manrope', sans-serif" font-size="12" fill="#a09c9a">Decomposes Query into Sub-Tasks</text>
+
+    <!-- Connector Arrow -->
+    <line x1="155" y1="85" x2="155" y2="120" stroke="#ef4151" stroke-width="2" stroke-dasharray="4 4"/>
+    <polygon points="151,120 155,126 159,120" fill="#ef4151"/>
+
+    <!-- Node 2: Web & Academic Research via Tavily -->
+    <rect x="0" y="125" width="310" height="85" rx="8" fill="#17171d" stroke="#2a252b" stroke-width="1.2"/>
+    <circle cx="36" cy="167" r="18" fill="#3D9BFF" opacity="0.15"/>
+    <text x="36" y="172" font-family="'Manrope', sans-serif" font-size="13" font-weight="800" fill="#3D9BFF" text-anchor="middle">🌐</text>
+    <text x="70" y="161" font-family="'Manrope', sans-serif" font-size="14" font-weight="700" fill="#f2efeb">Research &amp; Ranker</text>
+    <text x="70" y="181" font-family="'Manrope', sans-serif" font-size="12" fill="#a09c9a">Tavily API · Source Credibility Rerank</text>
+
+    <!-- Connector Arrow -->
+    <line x1="155" y1="210" x2="155" y2="245" stroke="#ef4151" stroke-width="2" stroke-dasharray="4 4"/>
+    <polygon points="151,245 155,251 159,245" fill="#ef4151"/>
+
+    <!-- Node 3: Critic Agent & Verification Loop -->
+    <rect x="0" y="250" width="310" height="120" rx="8" fill="#17171d" stroke="#ef4151" stroke-width="1.5"/>
+    <rect x="0" y="250" width="8" height="120" rx="4" fill="url(#rpRedAccent)"/>
+    <text x="24" y="280" font-family="'Manrope', sans-serif" font-size="14" font-weight="700" fill="#f2efeb">Critic Verification Loop</text>
+    <text x="24" y="302" font-family="'Manrope', sans-serif" font-size="12" fill="#ef4151" font-weight="600">🛡️ 97.2% Claim Verification</text>
+    <text x="24" y="324" font-family="'Manrope', sans-serif" font-size="11" fill="#a09c9a">Automated feedback retry loop on unverified facts</text>
+    <text x="24" y="344" font-family="'Manrope', sans-serif" font-size="11" fill="#7d787c">Writer Agent synthesizes verified Markdown</text>
+  </g>
+
+  <!-- Connecting line from Left to Right -->
+  <line x1="435" y1="365" x2="480" y2="365" stroke="#ef4151" stroke-width="2"/>
+  <polygon points="480,361 488,365 480,369" fill="#ef4151"/>
+
+  <!-- Right Column: ResearchPilot AI Console & Verified Report Preview -->
+  <g transform="translate(490, 180)">
+    <rect x="0" y="0" width="600" height="390" rx="10" fill="#0f0f13" stroke="#2d282c" stroke-width="1.2"/>
+    
+    <!-- Title Inside Mockup -->
+    <text x="35" y="45" font-family="'Anton', sans-serif" font-size="28" fill="#f2efeb" letter-spacing="1">RESEARCHPILOT INTELLIGENCE</text>
+    
+    <!-- Research prompt input -->
+    <rect x="35" y="65" width="530" height="42" rx="6" fill="#17171d" stroke="#332c33" stroke-width="1"/>
+    <text x="50" y="91" font-family="'Manrope', sans-serif" font-size="13" fill="#a09c9a">"Synthesize state-of-the-art vision models &amp; verify latency benchmarks"</text>
+    <rect x="475" y="71" width="82" height="30" rx="4" fill="#e32b3c"/>
+    <text x="516" y="91" font-family="'Manrope', sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Execute</text>
+
+    <!-- Key Metrics & Benchmark Pill -->
+    <g transform="translate(35, 125)">
+      <rect x="0" y="0" width="140" height="36" rx="6" fill="#191921"/>
+      <text x="14" y="23" font-family="'Manrope', sans-serif" font-size="11" fill="#a09c9a">Verification Rate: <tspan fill="#4CD964" font-weight="700">97.2%</tspan></text>
+      
+      <rect x="155" y="0" width="140" height="36" rx="6" fill="#191921"/>
+      <text x="169" y="23" font-family="'Manrope', sans-serif" font-size="11" fill="#a09c9a">Citation Integrity: <tspan fill="#3D9BFF" font-weight="700">100%</tspan></text>
+
+      <rect x="310" y="0" width="140" height="36" rx="6" fill="#191921"/>
+      <text x="324" y="23" font-family="'Manrope', sans-serif" font-size="11" fill="#a09c9a">Graph State: <tspan fill="#4CD964" font-weight="700">PASS</tspan></text>
+    </g>
+
+    <!-- Verified Research Report Preview -->
+    <rect x="35" y="180" width="530" height="185" rx="8" fill="#15151b" stroke="#252126" stroke-width="1"/>
+    <text x="55" y="210" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="#ef4151">Synthesized Research Report (Grounded)</text>
+    <text x="55" y="235" font-family="'Manrope', sans-serif" font-size="12" fill="#e0dedb">
+      • Graph decomposed inquiry into 4 parallel search threads via Tavily API <tspan fill="#3D9BFF">[Src 1]</tspan>.
+    </text>
+    <text x="55" y="260" font-family="'Manrope', sans-serif" font-size="12" fill="#e0dedb">
+      • Critic Agent reviewed 18 candidate claims; rejected 1 unbacked assertion and triggered re-crawl.
+    </text>
+    <text x="55" y="285" font-family="'Manrope', sans-serif" font-size="12" fill="#e0dedb">
+      • Final synthesis stream sent via Server-Sent Events (SSE) with strict claim citations <tspan fill="#ef4151">[Verified]</tspan>.
+    </text>
+    <text x="55" y="315" font-family="'Manrope', sans-serif" font-size="11" font-weight="600" fill="#a09c9a">
+      Stack: FastAPI · LangGraph · Tavily API · Supabase · Next.js · TypeScript
+    </text>
+    <rect x="55" y="332" width="105" height="20" rx="3" fill="#1e222a"/>
+    <text x="107" y="346" font-family="'Manrope', monospace" font-size="10" font-weight="700" fill="#3D9BFF" text-anchor="middle">CRITIC VERIFIED</text>
+  </g>
+</svg>
