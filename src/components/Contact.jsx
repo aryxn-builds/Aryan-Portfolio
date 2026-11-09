@@ -5,7 +5,6 @@ import {
   Linkedin,
   Github,
   Mail,
-  Phone,
   Copy,
   Check,
   ArrowUpRight,
@@ -28,7 +27,6 @@ export const Contact = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const recipientEmail = siteConfig.contact.email || "ay6033756@gmail.com";
-  const recipientPhone = siteConfig.contact.phone || "+91 8318695055";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -170,24 +168,6 @@ export const Contact = () => {
                 <span>{copiedEmail ? "Copied" : "Copy"}</span>
               </button>
             </div>
-
-            {/* Direct Phone / WhatsApp Card */}
-            {recipientPhone && (
-              <a
-                href={`tel:${recipientPhone.replace(/\s+/g, "")}`}
-                className="contact-channel-card"
-                title={`Call ${recipientPhone}`}
-              >
-                <div className="contact-channel-left">
-                  <Phone size={20} className="text-accent" aria-hidden="true" />
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: 14 }}>{recipientPhone}</div>
-                    <div style={{ fontSize: 12, color: "var(--muted)" }}>Direct phone &amp; WhatsApp</div>
-                  </div>
-                </div>
-                <ArrowUpRight size={16} className="text-muted" aria-hidden="true" />
-              </a>
-            )}
 
             {/* LinkedIn */}
             {siteConfig.contact.linkedin && (

@@ -27,7 +27,7 @@ export const siteConfig = {
 
   contact: {
     email: "ay6033756@gmail.com",
-    phone: "+91 8318695055",
+    phone: "",
     whatsapp: "",
     instagram: "",
     youtube: "",
