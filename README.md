@@ -18,13 +18,12 @@
 
 A modern, high-performance editorial portfolio engineered for **Aryan Yadav** — an **AI/ML & Generative AI Developer** specializing in Autonomous Multi-Agent Systems, Multimodal RAG pipelines, and Production ML services.
 
-The design takes direct visual inspiration from the editorial typography, brutalist grid discipline, and layered poster aesthetics of [touquirakhtar.com](https://touquirakhtar.com), elevated with crimson neon accents, high-contrast dark mode, and an **autonomous multi-agent rebuild animation (Swarmline)** running live on website launch.
-
 ---
 
 ## ✨ Key Features & Visual Showcase
 
 ### 1. 🐝 Autonomous Swarmline Rebuild Animation (Default on Load)
+
 When a visitor opens the portfolio, an autonomous swarm of **18 collaborative AI agent cursors** (named after LLMs: Claude, Gemini, GPT-4, Llama, Mistral, DeepSeek, etc.) scans the DOM tree in real time, clears the canvas, and systematically reconstructs the entire portfolio right before the user's eyes!
 
 <p align="center">
@@ -43,6 +42,7 @@ When a visitor opens the portfolio, an autonomous swarm of **18 collaborative AI
 ---
 
 ### 2. 🎨 Editorial Hero & Neural Portrait Integration
+
 A bold, poster-inspired hero section designed to make an unforgettable first impression.
 
 <p align="center">
@@ -51,12 +51,13 @@ A bold, poster-inspired hero section designed to make an unforgettable first imp
 
 - **Editorial Typography:** Massive `Anton` display typography featuring a crimson layered watermark (`PORTFOLIO`) intertwined with body copy and portrait elements.
 - **AI Portrait Silhouette:** Real-life portrait with background cleanly segmented via neural matting, blending directly into the portfolio's `#0a0a0c` canvas with radial red backlight spotlights.
-- **Live Status Badge:** Pulsating green indicator broadcasting *"Available for AI / ML Roles"*.
-- **Impact Metrics Bar:** Highlights core technical milestones: *10+ GenAI Pipelines*, *99.2% OCR Accuracy*, *Sub-800ms Latency*, and *100% Open Source*.
+- **Live Status Badge:** Pulsating green indicator broadcasting _"Available for AI / ML Roles"_.
+- **Impact Metrics Bar:** Highlights core technical milestones: _10+ GenAI Pipelines_, _99.2% OCR Accuracy_, _Sub-800ms Latency_, and _100% Open Source_.
 
 ---
 
 ### 3. 💼 Featured Production Projects & Architecture Modals
+
 Curated showcase of high-impact AI/ML engineering projects with direct links to live demonstrations and GitHub repositories.
 
 <p align="center">
@@ -64,17 +65,16 @@ Curated showcase of high-impact AI/ML engineering projects with direct links to 
 </p>
 
 #### Highlighted Projects:
+
 1. **DocuMind AI** — Production-Grade Multimodal Document Intelligence & RAG System
-   - *Tech:* FastAPI, Groq LPU, Llama-3.3-70B, Qdrant Vector DB, BGE-Large-v1.5, Docker.
-   - *Highlights:* Hybrid sparse-dense vector retrieval, contextual chunking, sub-800ms p95 latency.
+   - _Tech:_ FastAPI, Groq LPU, Llama-3.3-70B, Qdrant Vector DB, BGE-Large-v1.5, Docker.
+   - _Highlights:_ Hybrid sparse-dense vector retrieval, contextual chunking, sub-800ms p95 latency.
 2. **ResearchPilot AI** — Autonomous Multi-Agent Deep Research & Synthesis Engine
-   - *Tech:* LangGraph, CrewAI, Tavily Search API, Gemini 2.5 Flash, Streamlit.
-   - *Highlights:* Cyclic agent graph with Planner, Web Researcher, Fact-Checker, and Report Synthesizer agents.
-3. **Insurance Premium Prediction API** — End-to-End Production ML Regression Pipeline
-   - *Tech:* XGBoost, Scikit-learn, FastAPI, Docker, Streamlit.
-   - *Highlights:* Rigorous outlier detection, feature engineering, Automated EDA, Docker containerization.
+   - _Tech:_ LangGraph, CrewAI, Tavily Search API, Gemini 2.5 Flash, Streamlit.
+   - _Highlights:_ Cyclic agent graph with Planner, Web Researcher, Fact-Checker, and Report Synthesizer agents.
 
 #### Interactive Architecture Dialogs:
+
 Clicking any project opens an in-depth modal featuring technical architecture flowcharts, benchmark metrics, design trade-offs, and source links:
 
 <p align="center">
@@ -84,6 +84,7 @@ Clicking any project opens an in-depth modal featuring technical architecture fl
 ---
 
 ### 4. 📄 Floating Quick-Action Resume Widget & In-App Viewer
+
 A compact floating control pill fixed in the bottom-right corner provides immediate access to the engineer's resume without cluttering page flow.
 
 <p align="center">
@@ -96,6 +97,7 @@ A compact floating control pill fixed in the bottom-right corner provides immedi
 ---
 
 ### 5. 📬 Direct Email Delivery & Verified Contact System
+
 Comprehensive contact portal designed to guarantee zero missed opportunities.
 
 <p align="center">
@@ -110,22 +112,23 @@ Comprehensive contact portal designed to guarantee zero missed opportunities.
 ---
 
 ### 6. ⚡ Minimal Brand Preloader
+
 A sleek, unobtrusive page loader that triggers on initial load, matching the website's signature crimson gradient and dark theme colors to ensure zero flash of unstyled content (FOUC).
 
 ---
 
 ## 🛠️ Tech Stack & Tools
 
-| Category | Technologies & Tools |
-| :--- | :--- |
-| **Frontend Framework** | [React 19](https://react.dev/), [Vite 6](https://vitejs.dev/) |
-| **Styling & Design System** | Pure CSS3, Semantic Design Tokens, Fluid Typography, CSS Grid / Flexbox |
-| **Typography** | Google Fonts: [Anton](https://fonts.google.com/specimen/Anton) (Display), [Manrope](https://fonts.google.com/specimen/Manrope) (Body), [Caveat](https://fonts.google.com/specimen/Caveat) (Accent Handscript) |
-| **Motion & Dynamics** | [Swarmline Engine](https://github.com/imperfec-t/swarmline) (Multi-Agent Simulation), CSS Keyframe Animations |
-| **Iconography** | [Lucide React](https://lucide.dev/) |
-| **Email Gateway** | FormSubmit AJAX Endpoint + Gmail URL Protocol Handler |
-| **Testing & Quality** | [Playwright](https://playwright.dev/) for headless browser verification & automated screenshots |
-| **Version Control** | Git & [GitHub](https://github.com/aryxn-builds/Aryan-Portfolio) |
+| Category                    | Technologies & Tools                                                                                                                                                                                          |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Frontend Framework**      | [React 19](https://react.dev/), [Vite 6](https://vitejs.dev/)                                                                                                                                                 |
+| **Styling & Design System** | Pure CSS3, Semantic Design Tokens, Fluid Typography, CSS Grid / Flexbox                                                                                                                                       |
+| **Typography**              | Google Fonts: [Anton](https://fonts.google.com/specimen/Anton) (Display), [Manrope](https://fonts.google.com/specimen/Manrope) (Body), [Caveat](https://fonts.google.com/specimen/Caveat) (Accent Handscript) |
+| **Motion & Dynamics**       | [Swarmline Engine](https://github.com/imperfec-t/swarmline) (Multi-Agent Simulation), CSS Keyframe Animations                                                                                                 |
+| **Iconography**             | [Lucide React](https://lucide.dev/)                                                                                                                                                                           |
+| **Email Gateway**           | FormSubmit AJAX Endpoint + Gmail URL Protocol Handler                                                                                                                                                         |
+| **Testing & Quality**       | [Playwright](https://playwright.dev/) for headless browser verification & automated screenshots                                                                                                               |
+| **Version Control**         | Git & [GitHub](https://github.com/aryxn-builds/Aryan-Portfolio)                                                                                                                                               |
 
 ---
 
@@ -179,33 +182,41 @@ Aryan-Portfolio/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js `18.0.0` or higher
 - npm or yarn
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/aryxn-builds/Aryan-Portfolio.git
 cd Aryan-Portfolio
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Launch Development Server
+
 ```bash
 npm run dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) in your web browser.
 
 ### 4. Build for Production
+
 ```bash
 npm run build
 ```
+
 Creates an optimized production bundle inside the `dist/` directory ready for deployment on Vercel, Netlify, or GitHub Pages.
 
 ### 5. Preview Production Build Locally
+
 ```bash
 npm run preview
 ```
@@ -236,6 +247,7 @@ All data, media, and behaviors are isolated into straightforward configuration f
 ## 👨‍💻 Author
 
 **Aryan Yadav**
+
 - **Role:** AI/ML & Generative AI Developer
 - **Email:** [ay6033756@gmail.com](mailto:ay6033756@gmail.com)
 - **GitHub:** [@aryxn-builds](https://github.com/aryxn-builds)
