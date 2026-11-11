@@ -11,6 +11,7 @@ import {
   MessageSquare,
   Loader2,
   ExternalLink,
+  Code2,
 } from "lucide-react";
 
 export const Contact = () => {
@@ -208,6 +209,31 @@ export const Contact = () => {
                 <ArrowUpRight size={16} className="text-muted" aria-hidden="true" />
               </a>
             )}
+
+            {/* Additional Profiles (e.g. LeetCode) */}
+            {siteConfig.contact.otherLinks
+              ?.filter((link) => link?.url)
+              .map((link) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-channel-card"
+                  aria-label={`View Aryan Yadav on ${link.label}`}
+                >
+                  <div className="contact-channel-left">
+                    <Code2 size={20} className="text-accent" aria-hidden="true" />
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: 14 }}>{link.label}</div>
+                      <div style={{ fontSize: 12, color: "var(--muted)" }}>
+                        {link.subtitle || "Developer profile"}
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowUpRight size={16} className="text-muted" aria-hidden="true" />
+                </a>
+              ))}
           </div>
         </div>
 

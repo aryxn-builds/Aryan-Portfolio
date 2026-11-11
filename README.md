@@ -238,7 +238,6 @@ All data, media, and behaviors are isolated into straightforward configuration f
 ## 🤝 Acknowledgments & Credits
 
 - **Swarmline Rebuild Effect:** Built with inspiration and core code patterns from [imperfec-t/swarmline](https://github.com/imperfec-t/swarmline) by [@imperfec-t](https://github.com/imperfec-t).
-- **Design Inspiration:** Visual hierarchy and editorial layout inspired by [touquirakhtar.com](https://touquirakhtar.com/).
 - **Icons:** [Lucide React](https://lucide.dev/).
 - **Fonts:** [Anton](https://fonts.google.com/specimen/Anton), [Manrope](https://fonts.google.com/specimen/Manrope), [Caveat](https://fonts.google.com/specimen/Caveat) via Google Fonts.
 
@@ -251,10 +250,5 @@ All data, media, and behaviors are isolated into straightforward configuration f
 - **Role:** AI/ML & Generative AI Developer
 - **Email:** [ay6033756@gmail.com](mailto:ay6033756@gmail.com)
 - **GitHub:** [@aryxn-builds](https://github.com/aryxn-builds)
-- **Location:** Delhi, India
 
 ---
-
-<p align="center">
-  <sub>Built with ❤️ by Aryan Yadav · Licensed under the <a href="LICENSE">MIT License</a>.</sub>
-</p>

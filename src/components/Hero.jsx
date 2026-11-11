@@ -109,20 +109,6 @@ export const Hero = ({ toggleSwarm, isSwarmActive }) => {
         <div className="hero-stats">
           <div className="hero-stat-item">
             <div className="hero-stat-value font-display">
-              02<span className="text-accent">+</span>
-            </div>
-            <div className="hero-stat-label">Years focused on AI/ML &amp; GenAI</div>
-          </div>
-
-          <div className="hero-stat-item">
-            <div className="hero-stat-value font-display">
-              97<span className="text-accent">%</span>
-            </div>
-            <div className="hero-stat-label">Claim verification precision</div>
-          </div>
-
-          <div className="hero-stat-item">
-            <div className="hero-stat-value font-display">
               CSE<span className="text-accent">.</span>
             </div>
             <div className="hero-stat-label">B.Tech IEC CET (2023–2027)</div>

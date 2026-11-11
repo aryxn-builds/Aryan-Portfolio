@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { ProjectGrid } from "./components/ProjectGrid";
 import { ProjectDialog } from "./components/ProjectDialog";
+import { Experience } from "./components/Experience";
 import { Skills } from "./components/Skills";
 import { Education } from "./components/Education";
 import { About } from "./components/About";
@@ -28,7 +29,7 @@ export function App() {
       }
 
       // Check section in viewport
-      const sections = ["home", "work", "skills", "education", "about", "contact"];
+      const sections = ["home", "work", "experience", "skills", "education", "about", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -135,6 +136,9 @@ export function App() {
 
         {/* Selected Work / Projects */}
         <ProjectGrid onOpenProject={(project) => setSelectedProject(project)} />
+
+        {/* Work Experience */}
+        {siteConfig.preferences.showExperience && <Experience />}
 
         {/* Technical Skills & Ecosystem */}
         <Skills />

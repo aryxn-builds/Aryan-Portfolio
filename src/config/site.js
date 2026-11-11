@@ -36,7 +36,11 @@ export const siteConfig = {
     behance: "",
     dribbble: "",
     otherLinks: [
-      { label: "LeetCode", url: "https://leetcode.com/" },
+      {
+        label: "LeetCode",
+        url: "https://leetcode.com/aryan0203",
+        subtitle: "DSA & algorithmic problem solving",
+      },
     ],
   },
 
@@ -59,7 +63,7 @@ export const siteConfig = {
   preferences: {
     showAwards: false,
     showEducation: true,
-    showExperience: true, // Rendered as academic & project milestones
+    showExperience: true,
     showBeforeAfter: false,
     showClientLogos: false,
     showTestimonials: false,
@@ -71,6 +75,7 @@ export const siteConfig = {
 
   navLinks: [
     { label: "Work", href: "#work" },
+    { label: "Experience", href: "#experience" },
     { label: "Skills", href: "#skills" },
     { label: "Education", href: "#education" },
     { label: "About", href: "#about" },
